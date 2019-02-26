@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Home">
+
+    <Button
+        android:id="@+id/button_guess_country"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="gameGuessCountry"
+        android:text="@string/guess_the_country"
+        tools:layout_editor_absoluteX="22dp"
+        tools:layout_editor_absoluteY="185dp" />
+
+    <Button
+        android:id="@+id/button_guess_hint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="gameGuessHint"
+        android:text="@string/guess_hint"
+        tools:layout_editor_absoluteX="205dp"
+        tools:layout_editor_absoluteY="185dp" />
+
+    <Button
+        android:id="@+id/button_guess_flag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="gameGuessFlag"
+        android:text="@string/guess_the_flag"
+        tools:layout_editor_absoluteX="33dp"
+        tools:layout_editor_absoluteY="270dp" />
+
+    <Button
+        android:id="@+id/button_advanced_level"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="gameAdvancedLevel"
+        android:text="@string/advanced_level"
+        tools:layout_editor_absoluteX="187dp"
+        tools:layout_editor_absoluteY="270dp" />
+
+    <Switch
+        android:id="@+id/switch_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checked="false"
+        android:text="@string/timer_off"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:checked="false"
+        tools:layout_editor_absoluteY="387dp" />
+
+    <Button
+        android:id="@+id/button_submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:text="check" />
+
+</LinearLayout>

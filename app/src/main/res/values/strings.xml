@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Flag Quiz</string>
+    <string name="guess_the_country">Guess The Country</string>
+    <string name="guess_hint">Guess-Hint</string>
+    <string name="guess_the_flag">Guess The Flag</string>
+    <string name="advanced_level">Advanced Level</string>
+    <string name="timer_off">Timer Off</string>
+    <string name="flag_quiz">Flag Quiz</string>
+    <string name="start">Start</string>
+    <string name="quit">Quit</string>
+    <string name="choose_country">Choose Country</string>
+    <string name="pick_flag_for_country">Pick Flag For Country</string>
+</resources>
