@@ -24,24 +24,28 @@
 
     <ImageView
         android:id="@+id/game_image_4_2"
-        android:layout_width="100dp"
+        android:layout_width="0dp"
         android:layout_height="80dp"
+        android:layout_marginStart="29dp"
+        android:layout_marginEnd="35dp"
         android:layout_marginBottom="52dp"
         app:layout_constraintBottom_toTopOf="@+id/game_image_4_3"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/flag_two_answer_lable"
         app:layout_constraintHorizontal_bias="0.111"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@android:drawable/alert_dark_frame" />
 
     <ImageView
         android:id="@+id/game_image_4_3"
-        android:layout_width="100dp"
+        android:layout_width="0dp"
         android:layout_height="80dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="84dp"
+        android:layout_marginStart="29dp"
+        android:layout_marginEnd="34dp"
+        android:layout_marginBottom="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/flag_three_answer_lable"
         app:layout_constraintHorizontal_bias="0.086"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@android:drawable/alert_dark_frame" />
@@ -69,10 +73,10 @@
         android:text="Flag 2:"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.013"
         app:layout_constraintStart_toEndOf="@+id/game_image_4_2"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.498" />
+        app:layout_constraintVertical_bias="0.465" />
 
     <TextView
         android:id="@+id/flag_three_lable"
@@ -84,10 +88,10 @@
         android:text="Flag 3:"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.012"
         app:layout_constraintStart_toEndOf="@+id/game_image_4_3"
         app:layout_constraintTop_toBottomOf="@+id/flag_two_lable"
-        app:layout_constraintVertical_bias="0.467" />
+        app:layout_constraintVertical_bias="0.411" />
 
     <TextView
         android:id="@+id/advanced_flag_text"
@@ -108,7 +112,7 @@
         app:layout_constraintVertical_bias="0.017" />
 
     <EditText
-        android:id="@+id/Flag_one_answer"
+        android:id="@+id/flag_one_answer"
         android:layout_width="130dp"
         android:layout_height="0dp"
         android:layout_marginEnd="12dp"
@@ -125,20 +129,23 @@
         android:layout_width="130dp"
         android:layout_height="42dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="64dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         android:ems="10"
         android:hint="Guess Flag 2"
         android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.111"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/flag_two_lable"
-        app:layout_constraintTop_toBottomOf="@+id/Flag_one_answer" />
+        app:layout_constraintTop_toBottomOf="@+id/flag_one_answer"
+        app:layout_constraintVertical_bias="0.0" />
 
     <EditText
-        android:id="@+id/Flag_three_answer"
-        android:layout_width="130"
-        android:layout_height="42dp"
+        android:id="@+id/flag_three_answer"
+        android:layout_width="130dp"
+        android:layout_height="52dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -148,20 +155,22 @@
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/flag_three_lable"
         app:layout_constraintTop_toBottomOf="@+id/flag_two_answer"
-        app:layout_constraintVertical_bias="0.437" />
+        app:layout_constraintVertical_bias="0.378" />
 
     <Button
         android:id="@+id/button_game4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="1dp"
         android:onClick="Game_four_button"
-        android:text="Submit"
+        android:text="SUBMIT"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/game_image_4_3" />
+        app:layout_constraintStart_toEndOf="@+id/game_image_4_3"
+        app:layout_constraintTop_toBottomOf="@+id/flag_one_answer_lable"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/score_lable"
@@ -179,12 +188,64 @@
     <TextView
         android:id="@+id/score"
         android:layout_width="0dp"
-        android:layout_height="22dp"
-        android:layout_marginTop="47dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="14dp"
-        app:layout_constraintBottom_toTopOf="@+id/Flag_one_answer"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/score_lable"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.052" />
+
+    <TextView
+        android:id="@+id/text_result_game4"
+        android:layout_width="108dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="427dp"
+        android:layout_marginBottom="6dp"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/button_game4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.448"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/flag_one_answer_lable"
+        android:layout_width="177dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="144dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginBottom="292dp"
+        app:layout_constraintBottom_toTopOf="@+id/button_game4"
+        app:layout_constraintEnd_toEndOf="@+id/flag_one_answer"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/flag_two_answer_lable"
+        android:layout_width="184dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="263dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="88dp"
+        app:layout_constraintBottom_toTopOf="@+id/flag_three_answer_lable"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/flag_three_answer_lable"
+        android:layout_width="183dp"
+        android:layout_height="22dp"
+        android:layout_marginEnd="11dp"
+        android:layout_marginBottom="96dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/game_image_4_3" />
 </android.support.constraint.ConstraintLayout>
