@@ -228,7 +228,7 @@ public class Home extends AppCompatActivity {
     /**
      * @param view
      *
-     * ----------GAME 4 --------------
+     * ----------GAME 4 ---------------
      */
     public void gameAdvancedLevel(View view) {
 
