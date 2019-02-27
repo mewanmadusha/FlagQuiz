@@ -12,7 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.project.madus.flagquiz.database.FlagDataBaseHealper;
-import com.project.madus.flagquiz.database.FlagDataModel;
+import com.project.madus.flagquiz.Model.FlagDataModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -119,16 +119,31 @@ public class GameGuessTheFlag extends AppCompatActivity {
     /**
      * @param data
      * @return
+     * to get random index from flagdatamodel arrayList
      */
     public  FlagDataModel getRandomChestItem(List<FlagDataModel> data) {
         return data.get(new Random().nextInt(data.size()));
     }
 
+
+    /**
+     * @param items
+     * @return
+     * to get ramdom pick from imageview list
+     */
     public  ImageView getRandomChestImageView(List<ImageView> items) {
         return items.get(new Random().nextInt(items.size()));
     }
 
 
+
+
+    /**
+     * @param resName
+     * @param resType
+     * @param ctx
+     * @return
+     */
     protected final static int getResourceID(final String resName, final String resType, final Context ctx)
     {
         final int ResourceID =
@@ -152,7 +167,7 @@ public class GameGuessTheFlag extends AppCompatActivity {
      * @param result
      * @return
      *
-     * insted of using Gson I have create that methode to get cursor data in arraylist
+     * insted of using Gson I have create that methode to get cursor data to arraylist
      */
     private ArrayList<FlagDataModel> getflagdatafromCursor(Cursor result) {
 

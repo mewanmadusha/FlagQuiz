@@ -2,7 +2,6 @@ package com.project.madus.flagquiz;
 
 import android.content.Intent;
 import android.database.Cursor;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,19 +12,20 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.project.madus.flagquiz.database.FlagDataBaseHealper;
-import com.project.madus.flagquiz.database.FlagDataModel;
+import com.project.madus.flagquiz.Model.FlagDataModel;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.Console;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.logging.Logger;
 
 
+/**
+ *
+ */
 public class Home extends AppCompatActivity {
 
     Switch simpleSwitch;
@@ -148,7 +148,16 @@ public class Home extends AppCompatActivity {
 
     }
 
+
+    /**
+     * @param view
+     *
+     * ----------GAME 1 --------------
+     */
     public void gameGuessCountry(View view) {
+        /*
+         * Pass timer on off switch status through the intent
+         * */
         Intent intent = new Intent(this, GameGuessTheCountry.class);
         simpleSwitch = (Switch) findViewById(R.id.switch_time);
 
@@ -166,7 +175,15 @@ public class Home extends AppCompatActivity {
         startActivityForResult(intent, TEXT_REQUEST);
     }
 
+    /**
+     * @param view
+     *
+     * ----------GAME 2 --------------
+     */
     public void gameGuessHint(View view) {
+        /*
+         * Pass timer on off switch status through the intent
+         * */
         Intent intent = new Intent(this, GameGuessHint.class);
         simpleSwitch = (Switch) findViewById(R.id.switch_time);
 
@@ -184,7 +201,16 @@ public class Home extends AppCompatActivity {
         startActivityForResult(intent, TEXT_REQUEST);
     }
 
+
+    /**
+     * @param view
+     *
+     * ----------GAME 3 --------------
+     */
     public void gameGuessFlag(View view) {
+        /*
+         * Pass timer on off switch status through the intent
+         * */
         Intent intent = new Intent(this, GameGuessTheFlag.class);
         if (simpleSwitch.isChecked())
             statusSwitch = simpleSwitch.getTextOn().toString();
@@ -199,9 +225,23 @@ public class Home extends AppCompatActivity {
         startActivityForResult(intent, TEXT_REQUEST);
     }
 
+    /**
+     * @param view
+     *
+     * ----------GAME 4 --------------
+     */
     public void gameAdvancedLevel(View view) {
+
+        /*
+        * Pass timer on off switch status through the intent
+        * */
         Intent intent = new Intent(this, GameAdvancedLevel  .class);
-        startActivity(intent);
+        if (simpleSwitch.isChecked())
+            statusSwitch = simpleSwitch.getTextOn().toString();
+        else
+            statusSwitch = simpleSwitch.getTextOff().toString();
+        intent.putExtra(EXTRA_MESSAGE, statusSwitch);
+        startActivityForResult(intent, TEXT_REQUEST);
     }
 
 

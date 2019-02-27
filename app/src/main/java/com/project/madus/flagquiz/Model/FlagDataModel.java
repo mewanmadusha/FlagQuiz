@@ -1,4 +1,4 @@
-package com.project.madus.flagquiz.database;
+package com.project.madus.flagquiz.Model;
 
 public class FlagDataModel {
 
