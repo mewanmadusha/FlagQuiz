@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.project.madus.flagquiz.database.FlagDataBaseHealper;
-import com.project.madus.flagquiz.Model.FlagDataModel;
+import com.project.madus.flagquiz.model.FlagDataModel;
 
 import org.json.JSONArray;
 import org.json.JSONException;

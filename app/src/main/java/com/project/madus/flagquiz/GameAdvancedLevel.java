@@ -7,10 +7,7 @@ import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
-import android.text.Spannable;
-import android.text.SpannableString;
 import android.text.TextWatcher;
-import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -18,7 +15,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.project.madus.flagquiz.Model.FlagDataModel;
+import com.project.madus.flagquiz.model.FlagDataModel;
 import com.project.madus.flagquiz.database.FlagDataBaseHealper;
 
 import java.util.ArrayList;
@@ -74,6 +71,7 @@ public class GameAdvancedLevel extends AppCompatActivity {
 
         text_result_game4=(TextView)findViewById(R.id.text_result_game4);
         score_text=(TextView)findViewById(R.id.score);
+        score_text.setText(String.valueOf(score));
         /*
         * get data from intent switch status
         * */
@@ -238,6 +236,7 @@ public class GameAdvancedLevel extends AppCompatActivity {
 
     public void Game_four_button(View view) {
         int win = 0;
+
         String button_value = button.getText().toString();
 
         if (button_value.equals("SUBMIT")) {
@@ -250,7 +249,7 @@ public class GameAdvancedLevel extends AppCompatActivity {
 
             if (ans1.equals(flagDataModel1.getName().toLowerCase()))
             {
-
+                score++;
                 win++;
             }else {
                 flag_one_answer_lable.setText(flagDataModel1.getName());
@@ -259,7 +258,7 @@ public class GameAdvancedLevel extends AppCompatActivity {
 
             if (ans2.equals(flagDataModel2.getName().toLowerCase()))
             {
-
+                score++;
                 win++;
             }else {
                 flag_two_answer_lable.setText(flagDataModel2.getName());
@@ -268,7 +267,7 @@ public class GameAdvancedLevel extends AppCompatActivity {
 
             if (ans3.equals(flagDataModel3.getName().toLowerCase()))
             {
-
+                score++;
                 win++;
             }else {
                 flag_three_answer_lable.setText(flagDataModel3.getName());
@@ -279,11 +278,12 @@ public class GameAdvancedLevel extends AppCompatActivity {
             if (win < 3) {
                 text_result_game4.setText("WRONG!!");
                 text_result_game4.setTextColor(Color.RED);
+                score_text.setText(String.valueOf(score));
             }
             if (win == 3) {
                 text_result_game4.setText("CORRECT!!");
                 text_result_game4.setTextColor(Color.GREEN);
-                score++;
+
                 score_text.setText(String.valueOf(score));
 
             }

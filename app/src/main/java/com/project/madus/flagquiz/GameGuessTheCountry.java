@@ -15,7 +15,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.project.madus.flagquiz.database.FlagDataBaseHealper;
-import com.project.madus.flagquiz.Model.FlagDataModel;
+import com.project.madus.flagquiz.model.FlagDataModel;
 
 import java.util.ArrayList;
 import java.util.List;
