@@ -52,8 +52,8 @@
 
     <Button
         android:id="@+id/button_next_game2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="93dp"
+        android:layout_height="0dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:onClick="next_quiz_game2"
@@ -68,15 +68,15 @@
     <TextView
         android:id="@+id/textView2"
         android:layout_width="125dp"
-        android:layout_height="38dp"
+        android:layout_height="35dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="124dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginBottom="148dp"
         android:text="Guess Character"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/editText_input"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_message_2" />
+        app:layout_constraintHorizontal_bias="0.25"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/editText_input"
@@ -171,4 +171,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/text_timer_game2"
+        android:layout_width="52dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginBottom="267dp"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.652" />
 </android.support.constraint.ConstraintLayout>

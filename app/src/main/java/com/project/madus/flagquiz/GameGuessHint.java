@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
+import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -19,9 +20,19 @@ import com.project.madus.flagquiz.model.FlagDataModel;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Random;
 
 public class GameGuessHint extends AppCompatActivity {
+
+    /*
+     * this use as milisecods
+     * 10000miliseconds=10 seconds
+     * */
+    private static final long COUNTDOWN_FOR_QUIZ = 10000;
+    private CountDownTimer countDownTimer;
+    private long timeLeft;
+
 
     ImageView imageView2;
     TextView textViewdash;
@@ -33,6 +44,15 @@ public class GameGuessHint extends AppCompatActivity {
     EditText editText_input;
     int life=3;
     TextView text_status;
+    TextView textTimerGame2;
+
+    /*
+     * switch status
+     * */
+    String message;
+
+    boolean timeoutFlag = false;
+    int timerAttempt = 0;
 
 
     List<FlagDataModel> flagDataModels= new ArrayList<FlagDataModel>();
@@ -51,9 +71,10 @@ public class GameGuessHint extends AppCompatActivity {
         nextQuizButton2=findViewById(R.id.button_next_game2);
         text_lifecount=findViewById(R.id.text_lifecount);
         text_status=findViewById(R.id.text_status);
+        textTimerGame2 = findViewById(R.id.text_timer_game2);
 
         Intent intent = getIntent();
-        String message = intent.getStringExtra(Home.EXTRA_MESSAGE);
+        message = intent.getStringExtra(Home.EXTRA_MESSAGE);
 
 
 
@@ -79,9 +100,60 @@ public class GameGuessHint extends AppCompatActivity {
          * and also display character blank spaces to fill
          * */
         genarateRandomFlag();
+
+        if (message.equals("ON")) {
+            timeLeft = COUNTDOWN_FOR_QUIZ;
+            beingCountDown();
+
+        }
+
     }
 
+    private void beingCountDown() {
+        timerAttempt++;
+        timeoutFlag = false;
+        countDownTimer = new CountDownTimer(timeLeft, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
 
+                timeLeft = millisUntilFinished;
+                updateCountDownText();
+
+            }
+
+            @Override
+            public void onFinish() {
+
+                timeLeft = 0;
+                timeoutFlag = true;
+                checkButton2.performClick();
+
+
+            }
+        }.start();
+    }
+
+    private void updateCountDownText() {
+
+
+//        int minutes =(int) (timeLeft/1000)/60;
+        int seconds = (int) (timeLeft / 1000) % 60;
+
+        String formatedTime = String.format(Locale.getDefault(), "%02d", seconds);
+
+        textTimerGame2.setText(formatedTime);
+
+    }
+
+    private void resetTimer() {
+        timeLeft = COUNTDOWN_FOR_QUIZ;
+        updateCountDownText();
+        beingCountDown();
+    }
+
+    private void pauseTimer() {
+        countDownTimer.cancel();
+    }
 
     /**
      * @param result
@@ -157,7 +229,81 @@ public class GameGuessHint extends AppCompatActivity {
     }
 
     public void check_character(View view) {
+//       boolean chek=false;
 
+//        Log.i("--------","---------------------------------------------"+String.valueOf(timerAttempt));
+//     if (timerAttempt==3 && timeoutFlag==true && life>0){
+//         life=0;
+//         if (life < 1) {
+//
+////                nextQuizButton2.setVisibility(View.VISIBLE);
+////                checkButton2.setVisibility(View.GONE);
+//             checkButton2.setText("Next");
+//             textViewResult2.setVisibility(View.VISIBLE);
+//             textViewResult2.setText(flagDataModel.getName());
+//             textViewResult2.setTextColor(Color.BLUE);
+//             text_status.setVisibility(View.VISIBLE);
+//             text_status.setText("WRONG!! ");
+//             text_status.setTextColor(Color.RED);
+//             editText_input.setVisibility(View.GONE);
+//             if (message.equals("ON")) {
+//                 pauseTimer();
+//                 textTimerGame2.setText("");
+//
+//             }
+//         }
+//
+//         if (!hash.contains("_")) {
+//
+////                nextQuizButton2.setVisibility(View.VISIBLE);
+////                checkButton2.setVisibility(View.GONE);
+//             checkButton2.setText("Next");
+//             textViewResult2.setVisibility(View.VISIBLE);
+//             textViewResult2.setText(flagDataModel.getName());
+//             textViewResult2.setTextColor(Color.BLUE);
+//             text_status.setVisibility(View.VISIBLE);
+//             text_status.setText("CORRECT!! ");
+//             text_status.setTextColor(Color.GREEN);
+//             editText_input.setVisibility(View.GONE);
+//             if (message.equals("ON")) {
+//                 pauseTimer();
+//                 textTimerGame2.setText("");
+//             }
+//
+//         }
+//
+//         if (checkButton2.getText().equals("Next")) {
+////            nextQuizButton2.setVisibility(View.GONE);
+////            checkButton2.setVisibility(View.VISIBLE);
+//             textViewResult2.setVisibility(View.GONE);
+//             text_status.setVisibility(View.GONE);
+//             editText_input.setVisibility(View.VISIBLE);
+//             textViewdash.setText("");
+//             hash = "";
+//             life = 3;
+//             timerAttempt=0;
+//             genarateRandomFlag();
+//             checkButton2.setText("Check Character");
+//
+//             if (message.equals("ON")) {
+//                 pauseTimer();
+//                 resetTimer();
+//
+//             }
+//         }
+//        chek=true;
+//
+//     }else if(chek==false){
+
+        if (timerAttempt == 3 && timeoutFlag == true) {
+            life = 0;
+        }
+
+        if (message.equals("ON")) {
+            if (timeoutFlag == true) {
+                resetTimer();
+            }
+        }
         Boolean map = false;
 
         if (checkButton2.getText().equals("Check Character")) {
@@ -206,6 +352,10 @@ public class GameGuessHint extends AppCompatActivity {
                         text_status.setVisibility(View.GONE);
                     }
                 } else {
+                    if (message.equals("ON")) {
+                        pauseTimer();
+                        textTimerGame2.setText("");
+                    }
                     nextQuizButton2.setVisibility(View.VISIBLE);
                     checkButton2.setVisibility(View.GONE);
                     textViewResult2.setVisibility(View.VISIBLE);
@@ -214,10 +364,13 @@ public class GameGuessHint extends AppCompatActivity {
                     text_status.setVisibility(View.VISIBLE);
                     text_status.setText("CORRECT!! ");
                     text_status.setTextColor(Color.GREEN);
+
                 }
 //                }else {
 //                    Toast.makeText(getApplicationContext(), "Please Insert Charcter", Toast.LENGTH_SHORT).show();
 //                }
+
+                timeoutFlag = false;
             }
 
             if (life < 1) {
@@ -232,6 +385,11 @@ public class GameGuessHint extends AppCompatActivity {
                 text_status.setText("WRONG!! ");
                 text_status.setTextColor(Color.RED);
                 editText_input.setVisibility(View.GONE);
+                if (message.equals("ON")) {
+                    pauseTimer();
+                    textTimerGame2.setText("");
+
+                }
             }
 
             if (!hash.contains("_")) {
@@ -246,6 +404,10 @@ public class GameGuessHint extends AppCompatActivity {
                 text_status.setText("CORRECT!! ");
                 text_status.setTextColor(Color.GREEN);
                 editText_input.setVisibility(View.GONE);
+                if (message.equals("ON")) {
+                    pauseTimer();
+                    textTimerGame2.setText("");
+                }
 
             }
 
@@ -261,10 +423,17 @@ public class GameGuessHint extends AppCompatActivity {
             textViewdash.setText("");
             hash = "";
             life = 3;
+            timerAttempt = 0;
             genarateRandomFlag();
             checkButton2.setText("Check Character");
-        }
 
+            if (message.equals("ON")) {
+                pauseTimer();
+                resetTimer();
+
+            }
+        }
+//     }
 
     }
 
