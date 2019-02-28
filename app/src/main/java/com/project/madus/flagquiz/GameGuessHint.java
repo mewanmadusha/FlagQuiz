@@ -158,103 +158,118 @@ public class GameGuessHint extends AppCompatActivity {
 
     public void check_character(View view) {
 
-
         Boolean map = false;
-    if(life>0) {
 
-        if (hash.contains("_")) {
+        if (checkButton2.getText().equals("Check Character")) {
+            if (life > 0) {
 
-            editText_input = findViewById(R.id.editText_input);
-            Character inputString = editText_input.getText().charAt(0);
+                if (hash.contains("_")) {
 
-            char[] stringToCharArray = flagDataModel.getName().toLowerCase().toCharArray();
+                    try {
 
-            StringBuilder hashcode = new StringBuilder(hash);
-            int i=0;
-            for (char output : stringToCharArray) {
 
-                if (output == inputString) {
+                        editText_input = findViewById(R.id.editText_input);
+                        Character inputString = editText_input.getText().charAt(0);
+//                    if (inputString != null) {
 
-                    map = true;
-                  hashcode.setCharAt(i,inputString);
+                        char[] stringToCharArray = flagDataModel.getName().toLowerCase().toCharArray();
+
+                        StringBuilder hashcode = new StringBuilder(hash);
+                        int i = 0;
+                        for (char output : stringToCharArray) {
+
+                            if (output == inputString) {
+
+                                map = true;
+                                hashcode.setCharAt(i, inputString);
 //                    hash += inputString;
 
+                            }
+                            i += 2;
+
+
+                        }
+                        hash = hashcode.toString();
+                        textViewdash.setText(hash);
+                    } catch (Exception e) {
+                        Toast.makeText(getApplicationContext(), "Please Insert Charcter", Toast.LENGTH_SHORT).show();
+                    }
+                    if (map == false) {
+                        life--;
+                        text_lifecount.setText(String.valueOf(life));
+                        Toast.makeText(this, "You have only " + life + " life",
+                                Toast.LENGTH_SHORT).show();
+                        text_status.setVisibility(View.VISIBLE);
+                        text_status.setText("INCORRECT CHARCTER!!");
+                        text_status.setTextColor(Color.YELLOW);
+                    } else {
+                        text_status.setVisibility(View.GONE);
+                    }
+                } else {
+                    nextQuizButton2.setVisibility(View.VISIBLE);
+                    checkButton2.setVisibility(View.GONE);
+                    textViewResult2.setVisibility(View.VISIBLE);
+                    textViewResult2.setText(flagDataModel.getName());
+                    textViewResult2.setTextColor(Color.BLUE);
+                    text_status.setVisibility(View.VISIBLE);
+                    text_status.setText("CORRECT!! ");
+                    text_status.setTextColor(Color.GREEN);
                 }
-                i+=2;
-
-
-
+//                }else {
+//                    Toast.makeText(getApplicationContext(), "Please Insert Charcter", Toast.LENGTH_SHORT).show();
+//                }
             }
-            hash=hashcode.toString();
-            textViewdash.setText(hash);
 
-            if (map == false) {
-                life--;
-                text_lifecount.setText(String.valueOf(life));
-                Toast.makeText(this, "You have only " + life + " life",
-                        Toast.LENGTH_SHORT).show();
+            if (life < 1) {
+
+//                nextQuizButton2.setVisibility(View.VISIBLE);
+//                checkButton2.setVisibility(View.GONE);
+                checkButton2.setText("Next");
+                textViewResult2.setVisibility(View.VISIBLE);
+                textViewResult2.setText(flagDataModel.getName());
+                textViewResult2.setTextColor(Color.BLUE);
                 text_status.setVisibility(View.VISIBLE);
-                text_status.setText("INCORRECT CHARCTER!!");
-                text_status.setTextColor(Color.YELLOW);
-            }else {
-                text_status.setVisibility(View.GONE);
+                text_status.setText("WRONG!! ");
+                text_status.setTextColor(Color.RED);
+                editText_input.setVisibility(View.GONE);
             }
-        }
-        else {
-            nextQuizButton2.setVisibility(View.VISIBLE);
-            checkButton2.setVisibility(View.GONE);
-            textViewResult2.setVisibility(View.VISIBLE);
-            textViewResult2.setText(flagDataModel.getName());
-            textViewResult2.setTextColor(Color.BLUE);
-            text_status.setVisibility(View.VISIBLE);
-            text_status.setText("CORRECT!! ");
-            text_status.setTextColor(Color.GREEN);
-        }
-        }
 
-        if(life<1){
+            if (!hash.contains("_")) {
 
-            nextQuizButton2.setVisibility(View.VISIBLE);
-            checkButton2.setVisibility(View.GONE);
-            textViewResult2.setVisibility(View.VISIBLE);
-            textViewResult2.setText(flagDataModel.getName());
-            textViewResult2.setTextColor(Color.BLUE);
-            text_status.setVisibility(View.VISIBLE);
-            text_status.setText("WRONG!! ");
-            text_status.setTextColor(Color.RED);
-            editText_input.setVisibility(View.GONE);
-        }
+//                nextQuizButton2.setVisibility(View.VISIBLE);
+//                checkButton2.setVisibility(View.GONE);
+                checkButton2.setText("Next");
+                textViewResult2.setVisibility(View.VISIBLE);
+                textViewResult2.setText(flagDataModel.getName());
+                textViewResult2.setTextColor(Color.BLUE);
+                text_status.setVisibility(View.VISIBLE);
+                text_status.setText("CORRECT!! ");
+                text_status.setTextColor(Color.GREEN);
+                editText_input.setVisibility(View.GONE);
 
-        if (!hash.contains("_")){
+            }
 
-            nextQuizButton2.setVisibility(View.VISIBLE);
-            checkButton2.setVisibility(View.GONE);
-            textViewResult2.setVisibility(View.VISIBLE);
-            textViewResult2.setText(flagDataModel.getName());
-            textViewResult2.setTextColor(Color.BLUE);
-            text_status.setVisibility(View.VISIBLE);
-            text_status.setText("CORRECT!! ");
-            text_status.setTextColor(Color.GREEN);
-            editText_input.setVisibility(View.GONE);
 
+            editText_input.getText().clear();
+//            checkButton2.setText("Next");
+        } else if (checkButton2.getText().equals("Next")) {
+//            nextQuizButton2.setVisibility(View.GONE);
+//            checkButton2.setVisibility(View.VISIBLE);
+            textViewResult2.setVisibility(View.GONE);
+            text_status.setVisibility(View.GONE);
+            editText_input.setVisibility(View.VISIBLE);
+            textViewdash.setText("");
+            hash = "";
+            life = 3;
+            genarateRandomFlag();
+            checkButton2.setText("Check Character");
         }
 
 
-        editText_input.getText().clear();
     }
 
     public void next_quiz_game2(View view) {
 
-
-        nextQuizButton2.setVisibility(View.GONE);
-        checkButton2.setVisibility(View.VISIBLE);
-        textViewResult2.setVisibility(View.GONE);
-        text_status.setVisibility(View.GONE);
-        editText_input.setVisibility(View.VISIBLE);
-        textViewdash.setText("");
-        hash="";
-        life=3;
-        genarateRandomFlag();
 
     }
 }
