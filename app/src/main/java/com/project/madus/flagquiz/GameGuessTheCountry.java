@@ -32,6 +32,7 @@ public class GameGuessTheCountry extends AppCompatActivity {
     Button checkButton;
     Button nextQuizButton;
 
+
     List<FlagDataModel> flagDataModels= new ArrayList<FlagDataModel>();
     List<FlagDataModel> flagDataModelsCopy= new ArrayList<FlagDataModel>();
     ArrayList<String> countryNames=new ArrayList<>();
@@ -188,25 +189,51 @@ public class GameGuessTheCountry extends AppCompatActivity {
     public void gameOneCheckAnswer(View view) {
 
 
+        if (checkButton.getText().equals("Check")) {
 
-        String spinnerValue=spinner.getSelectedItem().toString();
+            String spinnerValue = spinner.getSelectedItem().toString();
 
-        if (flagDataModel.getName()== spinnerValue){
+            if (flagDataModel.getName() == spinnerValue) {
 
-            textViewResult.setVisibility(View.VISIBLE);
-            textViewResult.setText("Answe is Correct : it is "+flagDataModel.getName());
-            textViewResult.setTextColor(Color.GREEN);
-        }else {
-            textViewResult.setVisibility(View.VISIBLE);
-            textViewResult.setText("Answer is Wrong!! : it is "+flagDataModel.getName());
-            textViewResult.setTextColor(Color.RED);
+                textViewResult.setVisibility(View.VISIBLE);
+                textViewResult.setText("Answe is Correct : it is " + flagDataModel.getName());
+                textViewResult.setTextColor(Color.GREEN);
+            } else {
+                textViewResult.setVisibility(View.VISIBLE);
+                textViewResult.setText("Answer is Wrong!! : it is " + flagDataModel.getName());
+                textViewResult.setTextColor(Color.RED);
+            }
+
+//            checkButton.setVisibility(View.GONE);
+//            nextQuizButton.setVisibility(View.VISIBLE);
+            spinner.setVisibility(View.GONE);
+
+            flagDataModelsCopy.remove(flagDataModel.getId());
+
+            checkButton.setText("Next");
+        } else if (checkButton.getText().equals("Next")) {
+
+
+            /*
+             * to genarate random flag
+             * */
+            sppinerDataSetup();
+            genarateRandomFlag();
+//            checkButton.setVisibility(View.VISIBLE);
+//            nextQuizButton.setVisibility(View.GONE);
+            spinner.setVisibility(View.VISIBLE);
+            textViewResult.setVisibility(View.GONE);
+            checkButton.setText("Check");
+
+            /*
+             * to avoid duplicate ramdom index
+             * removed alredy genarated index
+             * checking
+             * */
+            Log.i("Array size", String.valueOf(flagDataModelsCopy.size()));
+
+
         }
-
-        checkButton.setVisibility(View.GONE);
-        nextQuizButton.setVisibility(View.VISIBLE);
-        spinner.setVisibility(View.GONE);
-
-        flagDataModelsCopy.remove(flagDataModel.getId());
     }
 
 
@@ -214,25 +241,7 @@ public class GameGuessTheCountry extends AppCompatActivity {
      * @param view
      * move forward to next quation
      */
-    public void nextQuiz(View view) {
-
-        /*
-         * to genarate random flag
-         * */
-        sppinerDataSetup();
-        genarateRandomFlag();
-        checkButton.setVisibility(View.VISIBLE);
-        nextQuizButton.setVisibility(View.GONE);
-        spinner.setVisibility(View.VISIBLE);
-        textViewResult.setVisibility(View.GONE);
-
-
-        /*
-        * to avoid duplicate ramdom index
-        * removed alredy genarated index
-        * checking
-        * */
-        Log.i("Array size",String.valueOf(flagDataModelsCopy.size()));
-
-    }
+//    public void nextQuiz(View view) {
+//
+//    }
 }

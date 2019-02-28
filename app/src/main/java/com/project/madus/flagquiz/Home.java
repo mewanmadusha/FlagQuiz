@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.Switch;
 import android.widget.Toast;
 
-import com.google.gson.Gson;
+
 import com.project.madus.flagquiz.database.FlagDataBaseHealper;
 import com.project.madus.flagquiz.model.FlagDataModel;
 
@@ -166,11 +166,11 @@ public class Home extends AppCompatActivity {
         else
             statusSwitch = simpleSwitch.getTextOff().toString();
 
-        Gson gson = new Gson();
-        String jsonflag = gson.toJson(flagDataArray);
+//        Gson gson = new Gson();
+//        String jsonflag = gson.toJson(flagDataArray);
 
         intent.putExtra(EXTRA_MESSAGE, statusSwitch);
-        intent.putExtra("DATA_SET", jsonflag);
+//        intent.putExtra("DATA_SET", jsonflag);
 //        startActivity(intent);
         startActivityForResult(intent, TEXT_REQUEST);
     }

@@ -41,13 +41,18 @@ public class GameAdvancedLevel extends AppCompatActivity {
     TextView flag_two_answer_lable;
     TextView flag_three_answer_lable;
 
+    boolean ans1flag=false;
+    boolean ans2flag=false;
+    boolean ans3flag=false;
 
+    int submitButtonAttempt=3;
     FlagDataBaseHealper flagDataBaseHealper;
 
     List<FlagDataModel> flagDataModels= new ArrayList<FlagDataModel>();
     List<FlagDataModel> flagDataModelsCopy= new ArrayList<FlagDataModel>();
     FlagDataModel flagDataModel;
 
+    int win = 0;
      FlagDataModel flagDataModel1;
      FlagDataModel flagDataModel2;
      FlagDataModel flagDataModel3;
@@ -97,55 +102,56 @@ public class GameAdvancedLevel extends AppCompatActivity {
         * */
         StartGame();
 
-        flag_one_answer.addTextChangedListener(filterTextWatcher);
-        flag_two_answer.addTextChangedListener(filterTextWatcher);
-        flag_three_answer.addTextChangedListener(filterTextWatcher);
+//        flag_one_answer.addTextChangedListener(filterTextWatcher);
+//        flag_two_answer.addTextChangedListener(filterTextWatcher);
+//        flag_three_answer.addTextChangedListener(filterTextWatcher);
 
 
 
     }
 
-    private TextWatcher filterTextWatcher = new TextWatcher() {
-
-        @Override
-        public void onTextChanged(CharSequence s, int start, int before, int count) {
-        /*
-        * real time check wether input is correct or not
-        * */
-//            Log.i("---------------",flag_one_answer.getText().toString().toLowerCase());
-//            Log.i("---------------",flagDataModel1.getName().toLowerCase());
-
-            if(flag_one_answer.getText().toString().toLowerCase().equals(flagDataModel1.getName().toLowerCase())){
-                flag_one_answer.setTextColor(Color.GREEN);
-            }else {
-                flag_one_answer.setTextColor(Color.RED);
-            }
-
-            if(flag_two_answer.getText().toString().toLowerCase().equals(flagDataModel2.getName().toLowerCase())){
-                flag_two_answer.setTextColor(Color.GREEN);
-            }else {
-                flag_two_answer.setTextColor(Color.RED);
-            }
-
-            if(flag_three_answer.getText().toString().toLowerCase().equals(flagDataModel3.getName().toLowerCase())){
-                flag_three_answer.setTextColor(Color.GREEN);
-            }else {
-                flag_three_answer.setTextColor(Color.RED);
-            }
-        }
-
-        @Override
-        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-
-
-        }
-
-        @Override
-        public void afterTextChanged(Editable s) {
-
-        }
-    };
+    /*
+     * real time check wether input is correct or not
+     * */
+//    private TextWatcher filterTextWatcher = new TextWatcher() {
+//
+//        @Override
+//        public void onTextChanged(CharSequence s, int start, int before, int count) {
+//
+////            Log.i("---------------",flag_one_answer.getText().toString().toLowerCase());
+////            Log.i("---------------",flagDataModel1.getName().toLowerCase());
+//
+//            if(flag_one_answer.getText().toString().toLowerCase().equals(flagDataModel1.getName().toLowerCase())){
+//                flag_one_answer.setTextColor(Color.GREEN);
+//            }else {
+//                flag_one_answer.setTextColor(Color.RED);
+//            }
+//
+//            if(flag_two_answer.getText().toString().toLowerCase().equals(flagDataModel2.getName().toLowerCase())){
+//                flag_two_answer.setTextColor(Color.GREEN);
+//            }else {
+//                flag_two_answer.setTextColor(Color.RED);
+//            }
+//
+//            if(flag_three_answer.getText().toString().toLowerCase().equals(flagDataModel3.getName().toLowerCase())){
+//                flag_three_answer.setTextColor(Color.GREEN);
+//            }else {
+//                flag_three_answer.setTextColor(Color.RED);
+//            }
+//        }
+//
+//        @Override
+//        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//
+//
+//
+//        }
+//
+//        @Override
+//        public void afterTextChanged(Editable s) {
+//
+//        }
+//    };
 
     private void StartGame() {
 
@@ -235,11 +241,16 @@ public class GameAdvancedLevel extends AppCompatActivity {
 
 
     public void Game_four_button(View view) {
-        int win = 0;
+
+
+
+
 
         String button_value = button.getText().toString();
 
         if (button_value.equals("SUBMIT")) {
+
+            if(submitButtonAttempt>0){
 
 
 
@@ -247,49 +258,80 @@ public class GameAdvancedLevel extends AppCompatActivity {
             String ans2 = flag_two_answer.getText().toString().toLowerCase();
             String ans3 = flag_three_answer.getText().toString().toLowerCase();
 
-            if (ans1.equals(flagDataModel1.getName().toLowerCase()))
+            if (ans1.equals(flagDataModel1.getName().toLowerCase()) && ans1flag==false)
             {
+                flag_one_answer.setTextColor(Color.GREEN);
+                flag_one_answer.setFocusable(false);
                 score++;
                 win++;
-            }else {
-                flag_one_answer_lable.setText(flagDataModel1.getName());
-                flag_one_answer_lable.setTextColor(Color.BLUE);
+                ans1flag=true;
+            }else if(ans1flag==false)  {
+                flag_one_answer.setTextColor(Color.RED);
+
             }
 
-            if (ans2.equals(flagDataModel2.getName().toLowerCase()))
+            if (ans2.equals(flagDataModel2.getName().toLowerCase()) &&ans2flag==false)
             {
+                flag_two_answer.setTextColor(Color.GREEN);
+                flag_two_answer.setFocusable(false);
                 score++;
                 win++;
-            }else {
-                flag_two_answer_lable.setText(flagDataModel2.getName());
-                flag_two_answer_lable.setTextColor(Color.BLUE);
+                ans2flag=true;
+            }else if(ans2flag==false) {
+
+                flag_two_answer.setTextColor(Color.RED);
             }
 
-            if (ans3.equals(flagDataModel3.getName().toLowerCase()))
+            if (ans3.equals(flagDataModel3.getName().toLowerCase()) && ans3flag==false)
             {
+                flag_three_answer.setTextColor(Color.GREEN);
+                flag_three_answer.setFocusable(false);
                 score++;
                 win++;
-            }else {
-                flag_three_answer_lable.setText(flagDataModel3.getName());
-                flag_three_answer_lable.setTextColor(Color.BLUE);
+                ans3flag=true;
+            }else if(ans3flag==false) {
+
+                flag_three_answer.setTextColor(Color.RED);
             }
 
 
-            if (win < 3) {
-                text_result_game4.setText("WRONG!!");
-                text_result_game4.setTextColor(Color.RED);
+
                 score_text.setText(String.valueOf(score));
-            }
-            if (win == 3) {
-                text_result_game4.setText("CORRECT!!");
-                text_result_game4.setTextColor(Color.GREEN);
-
-                score_text.setText(String.valueOf(score));
 
             }
+            submitButtonAttempt--;
 
-            button.setText("NEXT");
-        }
+
+
+             if(submitButtonAttempt==0 || win==3) {
+
+                if (win < 3) {
+                    text_result_game4.setText("WRONG!!");
+                    text_result_game4.setTextColor(Color.RED);
+
+                    if(ans1flag==false) {
+                        flag_one_answer_lable.setText(flagDataModel1.getName());
+                        flag_one_answer_lable.setTextColor(Color.BLUE);
+                    }
+                    if(ans2flag==false) {
+                        flag_two_answer_lable.setText(flagDataModel2.getName());
+                        flag_two_answer_lable.setTextColor(Color.BLUE);
+                    }
+                    if(ans3flag==false) {
+                        flag_three_answer_lable.setText(flagDataModel3.getName());
+                        flag_three_answer_lable.setTextColor(Color.BLUE);
+                    }
+                }
+                if (win == 3) {
+                    text_result_game4.setText("CORRECT!!");
+                    text_result_game4.setTextColor(Color.GREEN);
+
+
+
+                }
+                button.setText("NEXT");
+            }
+            }
 
         if(button_value.equals("NEXT")){
             StartGame();
@@ -300,7 +342,19 @@ public class GameAdvancedLevel extends AppCompatActivity {
             flag_two_answer.setText("");
             flag_three_answer.setText("");
             text_result_game4.setText("");
+            flag_one_answer.setTextColor(Color.BLACK);
+            flag_two_answer.setTextColor(Color.BLACK);
+            flag_three_answer.setTextColor(Color.BLACK);
+            submitButtonAttempt=3;
+            win=0;
+            ans3flag=false;
+            ans2flag=false;
+            ans1flag=false;
+            flag_one_answer.setFocusableInTouchMode(true);
+            flag_two_answer.setFocusableInTouchMode(true);
+            flag_three_answer.setFocusableInTouchMode(true);
             button.setText("SUBMIT");
+
 
         }
 
