@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
+import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -20,9 +21,19 @@ import com.project.madus.flagquiz.database.FlagDataBaseHealper;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Random;
 
 public class GameAdvancedLevel extends AppCompatActivity {
+
+
+    /*
+     * this use as milisecods
+     * 10000miliseconds=10 seconds
+     * */
+    private static final long COUNTDOWN_FOR_QUIZ = 10000;
+    private CountDownTimer countDownTimer;
+    private long timeLeft;
 
 
     int score=0;
@@ -36,6 +47,7 @@ public class GameAdvancedLevel extends AppCompatActivity {
     Button button;
     TextView text_result_game4;
     TextView score_text;
+    TextView textTimerGame4;
 
     TextView flag_one_answer_lable;
     TextView flag_two_answer_lable;
@@ -51,6 +63,14 @@ public class GameAdvancedLevel extends AppCompatActivity {
     List<FlagDataModel> flagDataModels= new ArrayList<FlagDataModel>();
     List<FlagDataModel> flagDataModelsCopy= new ArrayList<FlagDataModel>();
     FlagDataModel flagDataModel;
+
+    /*
+     * switch status variable
+     * */
+    String message;
+
+    int timerAttempt = 0;
+    boolean timeoutFlag = false;
 
     int win = 0;
      FlagDataModel flagDataModel1;
@@ -73,6 +93,7 @@ public class GameAdvancedLevel extends AppCompatActivity {
         flag_two_answer_lable=(TextView)findViewById(R.id.flag_two_answer_lable);
         flag_three_answer_lable=(TextView)findViewById(R.id.flag_three_answer_lable);
 
+        textTimerGame4 = (TextView) findViewById(R.id.text_timer_game4);
 
         text_result_game4=(TextView)findViewById(R.id.text_result_game4);
         score_text=(TextView)findViewById(R.id.score);
@@ -81,7 +102,7 @@ public class GameAdvancedLevel extends AppCompatActivity {
         * get data from intent switch status
         * */
         Intent intent = getIntent();
-        String message = intent.getStringExtra(Home.EXTRA_MESSAGE);
+        message = intent.getStringExtra(Home.EXTRA_MESSAGE);
 
         flagDataBaseHealper=new FlagDataBaseHealper(this);
         Cursor result=flagDataBaseHealper.getAllFlagData();
@@ -106,8 +127,60 @@ public class GameAdvancedLevel extends AppCompatActivity {
 //        flag_two_answer.addTextChangedListener(filterTextWatcher);
 //        flag_three_answer.addTextChangedListener(filterTextWatcher);
 
+        if (message.equals("ON")) {
+            timeLeft = COUNTDOWN_FOR_QUIZ;
+            beingCountDown();
+
+        }
 
 
+    }
+
+    private void beingCountDown() {
+        timerAttempt++;
+        timeoutFlag = false;
+        countDownTimer = new CountDownTimer(timeLeft, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+
+                timeLeft = millisUntilFinished;
+                updateCountDownText();
+
+            }
+
+            @Override
+            public void onFinish() {
+
+                timeLeft = 0;
+                timeoutFlag = true;
+                button.performClick();
+
+
+            }
+        }.start();
+    }
+
+    private void updateCountDownText() {
+
+
+//        int minutes =(int) (timeLeft/1000)/60;
+        int seconds = (int) (timeLeft / 1000) % 60;
+
+        String formatedTime = String.format(Locale.getDefault(), "%02d", seconds);
+
+        textTimerGame4.setText(formatedTime);
+
+    }
+
+    private void resetTimer() {
+        timeLeft = COUNTDOWN_FOR_QUIZ;
+        updateCountDownText();
+        beingCountDown();
+    }
+
+
+    private void pauseTimer() {
+        countDownTimer.cancel();
     }
 
     /*
@@ -243,6 +316,11 @@ public class GameAdvancedLevel extends AppCompatActivity {
     public void Game_four_button(View view) {
 
 
+        if (message.equals("ON")) {
+            if (timerAttempt <= 3 && timeoutFlag == true) {
+                resetTimer();
+            }
+        }
 
 
 
@@ -306,6 +384,11 @@ public class GameAdvancedLevel extends AppCompatActivity {
              if(submitButtonAttempt==0 || win==3) {
 
                 if (win < 3) {
+
+                    if (message.equals("ON")) {
+                        pauseTimer();
+                        textTimerGame4.setText("");
+                    }
                     text_result_game4.setText("WRONG!!");
                     text_result_game4.setTextColor(Color.RED);
 
@@ -325,6 +408,11 @@ public class GameAdvancedLevel extends AppCompatActivity {
                 if (win == 3) {
                     text_result_game4.setText("CORRECT!!");
                     text_result_game4.setTextColor(Color.GREEN);
+                    if (message.equals("ON")) {
+                        pauseTimer();
+                        textTimerGame4.setText("");
+                    }
+
 
 
 
@@ -333,7 +421,12 @@ public class GameAdvancedLevel extends AppCompatActivity {
             }
             }
 
+
         if(button_value.equals("NEXT")){
+
+            if (message.equals("ON")) {
+                resetTimer();
+            }
             StartGame();
             flag_one_answer_lable.setText("");
             flag_two_answer_lable.setText("");
@@ -354,6 +447,7 @@ public class GameAdvancedLevel extends AppCompatActivity {
             flag_two_answer.setFocusableInTouchMode(true);
             flag_three_answer.setFocusableInTouchMode(true);
             button.setText("SUBMIT");
+            timerAttempt = 0;
 
 
         }
