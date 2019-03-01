@@ -296,7 +296,79 @@ public class GameGuessHint extends AppCompatActivity {
 //     }else if(chek==false){
 
         if (timerAttempt == 3 && timeoutFlag == true) {
+            pauseTimer();
             life = 0;
+            Boolean map = false;
+            if (hash.contains("_")) {
+
+                try {
+
+
+                    editText_input = findViewById(R.id.editText_input);
+                    String inputStringStr = editText_input.getText().toString().toLowerCase();
+                    Character inputString = inputStringStr.charAt(0);
+//                    if (inputString != null) {
+
+                    char[] stringToCharArray = flagDataModel.getName().toLowerCase().toCharArray();
+
+                    StringBuilder hashcode = new StringBuilder(hash);
+                    int i = 0;
+                    for (char output : stringToCharArray) {
+
+                        if (output == inputString) {
+
+                            map = true;
+                            hashcode.setCharAt(i, inputString);
+//                    hash += inputString;
+
+                        }
+                        i += 2;
+
+
+                    }
+                    hash = hashcode.toString();
+                    textViewdash.setText(hash);
+                } catch (Exception e) {
+                    Toast.makeText(getApplicationContext(), "Please Insert Charcter", Toast.LENGTH_SHORT).show();
+                }
+                if (map == false) {
+                    life--;
+                    if (life == -1) {
+                        text_lifecount.setText(String.valueOf(0));
+                    } else {
+                        text_lifecount.setText(String.valueOf(life));
+                    }
+
+
+                    if (life > 0) {
+                        Toast.makeText(this, "You have only " + life + " life",
+                                Toast.LENGTH_SHORT).show();
+                    } else if (life == -1) {
+                        Toast.makeText(this, "You lost",
+                                Toast.LENGTH_SHORT).show();
+                    }
+                    text_status.setVisibility(View.VISIBLE);
+                    text_status.setText("INCORRECT CHARCTER!!");
+                    text_status.setTextColor(Color.YELLOW);
+                } else {
+                    text_status.setVisibility(View.GONE);
+                }
+            } else {
+                if (message.equals("ON")) {
+                    pauseTimer();
+                    textTimerGame2.setText("");
+                }
+                nextQuizButton2.setVisibility(View.VISIBLE);
+                checkButton2.setVisibility(View.GONE);
+                textViewResult2.setVisibility(View.VISIBLE);
+                textViewResult2.setText(flagDataModel.getName());
+                textViewResult2.setTextColor(Color.BLUE);
+                text_status.setVisibility(View.VISIBLE);
+                text_status.setText("CORRECT!! ");
+                text_status.setTextColor(Color.GREEN);
+
+            }
+
         }
 
         if (message.equals("ON")) {
@@ -315,7 +387,8 @@ public class GameGuessHint extends AppCompatActivity {
 
 
                         editText_input = findViewById(R.id.editText_input);
-                        Character inputString = editText_input.getText().charAt(0);
+                        String inputStringStr = editText_input.getText().toString().toLowerCase();
+                        Character inputString = inputStringStr.charAt(0);
 //                    if (inputString != null) {
 
                         char[] stringToCharArray = flagDataModel.getName().toLowerCase().toCharArray();
@@ -342,9 +415,16 @@ public class GameGuessHint extends AppCompatActivity {
                     }
                     if (map == false) {
                         life--;
+
+
                         text_lifecount.setText(String.valueOf(life));
-                        Toast.makeText(this, "You have only " + life + " life",
-                                Toast.LENGTH_SHORT).show();
+                        if (life != 0) {
+                            Toast.makeText(this, "You have only " + life + " life",
+                                    Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(this, "You lost",
+                                    Toast.LENGTH_SHORT).show();
+                        }
                         text_status.setVisibility(View.VISIBLE);
                         text_status.setText("INCORRECT CHARCTER!!");
                         text_status.setTextColor(Color.YELLOW);
@@ -364,6 +444,7 @@ public class GameGuessHint extends AppCompatActivity {
                     text_status.setVisibility(View.VISIBLE);
                     text_status.setText("CORRECT!! ");
                     text_status.setTextColor(Color.GREEN);
+
 
                 }
 //                }else {
