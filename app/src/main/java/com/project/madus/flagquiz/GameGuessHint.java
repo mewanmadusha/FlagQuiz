@@ -68,7 +68,7 @@ public class GameGuessHint extends AppCompatActivity {
         textViewdash=findViewById(R.id.Text_answer_dash);
         textViewResult2=findViewById(R.id.Text_result_game2);
         checkButton2=findViewById(R.id.button_check_game2);
-        nextQuizButton2=findViewById(R.id.button_next_game2);
+//        nextQuizButton2=findViewById(R.id.button_next_game2);
         text_lifecount=findViewById(R.id.text_lifecount);
         text_status=findViewById(R.id.text_status);
         textTimerGame2 = findViewById(R.id.text_timer_game2);

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -64,7 +65,7 @@ public class GameGuessTheFlag extends AppCompatActivity {
         flagDataBaseHealper=new FlagDataBaseHealper(this);
         Cursor result=flagDataBaseHealper.getAllFlagData();
 
-        game_image_3_1=findViewById(R.id.advanced_flag_text);
+        game_image_3_1 = findViewById(R.id.game_image_3_1);
         game_image_3_2=findViewById(R.id.game_image_3_2);
         game_image_3_3=findViewById(R.id.game_image_3_3);
 
@@ -246,6 +247,10 @@ public class GameGuessTheFlag extends AppCompatActivity {
 
     public void next_quiz(View view) {
         getRandomFlag();
+        game_image_3_3.setBackground(null);
+        game_image_3_1.setBackground(null);
+        game_image_3_2.setBackground(null);
+
         text_result_game3.setText("");
         if (message.equals("ON")) {
             resetTimer();
@@ -255,17 +260,29 @@ public class GameGuessTheFlag extends AppCompatActivity {
 
     public void imageThreeClick(View view) {
 
+        Drawable highlight = getResources().getDrawable(R.drawable.highlight);
+        game_image_3_3.setBackground(highlight);
+        game_image_3_1.setBackground(null);
+        game_image_3_2.setBackground(null);
         int value=3;
         checkvalue(value);
     }
 
 
     public void imagetwoClick(View view) {
+        Drawable highlight = getResources().getDrawable(R.drawable.highlight);
+        game_image_3_2.setBackground(highlight);
+        game_image_3_3.setBackground(null);
+        game_image_3_1.setBackground(null);
         int value=2;
         checkvalue(value);
     }
 
     public void imageOneClick(View view) {
+        Drawable highlight = getResources().getDrawable(R.drawable.highlight);
+        game_image_3_3.setBackground(null);
+        game_image_3_2.setBackground(null);
+        game_image_3_1.setBackground(highlight);
         int value=1;
         checkvalue(value);
     }
