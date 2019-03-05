@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/backg_home"
     android:orientation="vertical"
     tools:context=".Home">
 
@@ -11,8 +12,16 @@
         android:id="@+id/button_guess_country"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/button_guess_flag"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="156dp"
+        android:alpha="0.85"
+        android:background="@drawable/shape"
+        android:includeFontPadding="false"
         android:onClick="gameGuessCountry"
         android:text="@string/guess_the_country"
+        android:textSize="18sp"
         tools:layout_editor_absoluteX="22dp"
         tools:layout_editor_absoluteY="185dp" />
 
@@ -20,8 +29,15 @@
         android:id="@+id/button_guess_hint"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/button_guess_flag"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="229dp"
+        android:alpha="0.85"
+        android:background="@drawable/shape"
         android:onClick="gameGuessHint"
         android:text="@string/guess_hint"
+        android:textSize="18sp"
         tools:layout_editor_absoluteX="205dp"
         tools:layout_editor_absoluteY="185dp" />
 
@@ -29,8 +45,15 @@
         android:id="@+id/button_guess_flag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="46dp"
+        android:layout_marginTop="301dp"
+        android:alpha="0.85"
+        android:background="@drawable/shape"
         android:onClick="gameGuessFlag"
         android:text="@string/guess_the_flag"
+        android:textSize="18sp"
         tools:layout_editor_absoluteX="33dp"
         tools:layout_editor_absoluteY="270dp" />
 
@@ -38,8 +61,15 @@
         android:id="@+id/button_advanced_level"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="47dp"
+        android:layout_marginBottom="134dp"
+        android:alpha="0.85"
+        android:background="@drawable/shape"
         android:onClick="gameAdvancedLevel"
         android:text="@string/advanced_level"
+        android:textSize="18sp"
         tools:layout_editor_absoluteX="187dp"
         tools:layout_editor_absoluteY="270dp" />
 
@@ -47,6 +77,10 @@
         android:id="@+id/switch_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="161dp"
+        android:layout_marginTop="32dp"
         android:checked="false"
         android:text="@string/timer"
         app:layout_constraintEnd_toEndOf="parent"
@@ -59,6 +93,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="37dp"
         android:text="check" />
 
-</LinearLayout>
+</RelativeLayout>

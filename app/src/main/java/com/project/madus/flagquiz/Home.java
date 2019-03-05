@@ -2,6 +2,7 @@ package com.project.madus.flagquiz;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -37,6 +38,12 @@ public class Home extends AppCompatActivity {
 
     FlagDataBaseHealper  flagDataBaseHealper;
 
+    Button game1;
+    Button game2;
+    Button game3;
+    Button game4;
+
+
     ArrayList<FlagDataModel> flagDataArray = new ArrayList<FlagDataModel>();
 
 
@@ -46,7 +53,21 @@ public class Home extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
          simpleSwitch = (Switch) findViewById(R.id.switch_time);
-         submit = (Button) findViewById(R.id.button_submit);
+
+
+        submit = (Button) findViewById(R.id.button_submit);
+
+        game1 = findViewById(R.id.button_guess_country);
+        game2 = findViewById(R.id.button_guess_hint);
+        game3 = findViewById(R.id.button_guess_flag);
+        game4 = findViewById(R.id.button_advanced_level);
+
+        Typeface font = Typeface.createFromAsset(getAssets(), "font.ttf");
+        game1.setTypeface(font);
+        game2.setTypeface(font);
+        game3.setTypeface(font);
+        game4.setTypeface(font);
+
          submit.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {

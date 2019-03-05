@@ -1,24 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FF3E454F"
+
+    android:background="@drawable/spalsh"
     android:gravity="center"
     android:orientation="vertical"
     tools:context=".MainActivity">
-
-    <TextView
-        android:id="@+id/game_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:text="@string/flag_quiz"
-        android:textAppearance="@android:style/TextAppearance.Material.Small"
-        android:textColor="@android:color/white"
-        android:textSize="50sp" />
 
     <View
         android:id="@+id/view"
@@ -26,39 +16,34 @@
         android:layout_height="20dp"
         android:layout_weight="1" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_weight="1"
-        app:srcCompat="@drawable/welcome" />
-
     <Button
         android:id="@+id/button_start"
         style="@android:style/Widget.DeviceDefault.Button.Borderless"
-        android:layout_width="350dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
+        android:layout_alignStart="@+id/button_quit"
 
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="115dp"
+        android:layout_weight="1"
         android:background="@drawable/shape"
         android:elevation="0dp"
         android:onClick="start_click"
         android:text="@string/start" />
 
-    <View
-        android:id="@+id/view3"
-        android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:layout_weight="1" />
 
     <Button
         android:id="@+id/button_quit"
         style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_width="350dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="42dp"
+        android:layout_marginBottom="40dp"
         android:layout_weight="1"
         android:background="@drawable/shape"
         android:onClick="quit_click"
         android:text="@string/quit" />
 
-</LinearLayout>
+</RelativeLayout>
