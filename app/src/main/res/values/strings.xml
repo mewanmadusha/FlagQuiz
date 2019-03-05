@@ -35,5 +35,7 @@
     <string name="game3_image2">game3_image2</string>
     <string name="game3_image3">game3_image3</string>
     <string name="next">Next</string>
-    <string name="timer">Timer</string>
+    <string name="timer">Timer :</string>
+    <string name="timer_text">Timer:</string>
+    <string name="quiz_menu">Quiz Menu</string>
 </resources>
