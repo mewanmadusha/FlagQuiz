@@ -99,15 +99,15 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
 
-        android:layout_marginStart="106dp"
+        android:layout_marginStart="113dp"
 
-        android:layout_marginTop="470dp"
+        android:layout_marginTop="479dp"
 
-        android:layout_marginEnd="173dp"
-        android:layout_marginBottom="60dp"
+        android:layout_marginEnd="166dp"
+        android:layout_marginBottom="51dp"
         android:checked="false"
-        android:scaleX="2"
-        android:scaleY="2"
+        android:scaleX="1.5"
+        android:scaleY="1.5"
         android:textAlignment="center"
         android:textSize="18sp"
         android:thumb="@drawable/switch_timer_thumb"
@@ -160,11 +160,12 @@
 
     <ImageView
         android:id="@+id/imageView5"
-        android:layout_width="194dp"
-        android:layout_height="155dp"
+        android:layout_width="214dp"
+        android:layout_height="118dp"
+        android:layout_alignStart="@+id/home_head_text"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="450dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="449dp"
         app:srcCompat="@drawable/timer_image" />
 
 </RelativeLayout>
