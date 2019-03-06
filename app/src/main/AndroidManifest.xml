@@ -24,10 +24,18 @@
         <activity
             android:name=".Home"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".GameGuessTheCountry" />
-        <activity android:name=".GameGuessHint" />
-        <activity android:name=".GameGuessTheFlag" />
-        <activity android:name=".GameAdvancedLevel" />
+        <activity
+            android:name=".GameGuessTheCountry"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".GameGuessHint"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".GameGuessTheFlag"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".GameAdvancedLevel"
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <meta-data
             android:name="preloaded_fonts"
