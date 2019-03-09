@@ -536,4 +536,8 @@ public class GameGuessHint extends AppCompatActivity {
 
 
     }
+
+    public void back(View view) {
+        finish();
+    }
 }

@@ -351,6 +351,10 @@ public class GameGuessTheCountry extends AppCompatActivity {
 
     }
 
+    public void back(View view) {
+        finish();
+    }
+
 
     /**
      * @param view

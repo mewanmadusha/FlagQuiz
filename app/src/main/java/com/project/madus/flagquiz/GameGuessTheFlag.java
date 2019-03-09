@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
@@ -38,6 +39,8 @@ public class GameGuessTheFlag extends AppCompatActivity {
     ImageView game_image_3_3;
     TextView text_country_name;
     TextView text_result_game3;
+    TextView game3_header;
+    TextView pickFlagText;
 
 
     FlagDataBaseHealper  flagDataBaseHealper;
@@ -72,12 +75,22 @@ public class GameGuessTheFlag extends AppCompatActivity {
         game_image_3_1.setTag("ImageOne");
         game_image_3_2.setTag("ImageTwo");
         game_image_3_3.setTag("ImageThree");
+        game3_header = findViewById(R.id.game3_header_text);
+        pickFlagText = findViewById(R.id.pick_flag_text);
 
         buttonNext = findViewById(R.id.button_next_game3);
         textTimerGame3 = findViewById(R.id.text_timer_game3);
 
         text_country_name=findViewById(R.id.text_country_name);
         text_result_game3=findViewById(R.id.text_result_game3);
+        Typeface font = Typeface.createFromAsset(getAssets(), "font.ttf");
+
+        text_country_name.setTypeface(font);
+        buttonNext.setTypeface(font);
+        text_result_game3.setTypeface(font);
+        game3_header.setTypeface(font);
+        pickFlagText.setTypeface(font);
+
 
         /*
          * populate cursor data into flagdata object array
@@ -332,4 +345,7 @@ public class GameGuessTheFlag extends AppCompatActivity {
     }
 
 
+    public void back(View view) {
+        finish();
+    }
 }

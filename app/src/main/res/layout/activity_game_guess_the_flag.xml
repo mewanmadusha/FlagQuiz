@@ -4,41 +4,43 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/game_3_backg"
     tools:context=".GameGuessTheFlag">
 
     <ImageView
         android:id="@+id/game_image_3_1"
-        android:layout_width="109dp"
+        android:layout_width="100dp"
         android:layout_height="80dp"
         android:layout_marginStart="8dp"
         android:contentDescription="@string/game3_image1"
         android:onClick="imageOneClick"
         app:layout_constraintEnd_toStartOf="@+id/game_image_3_2"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/game_image_3_2"
         app:srcCompat="@android:drawable/alert_dark_frame" />
 
     <ImageView
         android:id="@+id/game_image_3_2"
-        android:layout_width="109dp"
+        android:layout_width="100dp"
         android:layout_height="80dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:contentDescription="@string/game3_image2"
         android:onClick="imagetwoClick"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/game_image_3_3"
-        app:layout_constraintHorizontal_bias="0.5"
-
+        app:layout_constraintHorizontal_bias="0.976"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.171"
+        app:layout_constraintVertical_bias="0.203"
         app:srcCompat="@android:drawable/alert_dark_frame" />
 
     <ImageView
         android:id="@+id/game_image_3_3"
-        android:layout_width="110dp"
+        android:layout_width="100dp"
         android:layout_height="80dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
@@ -51,7 +53,7 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.171"
+        app:layout_constraintVertical_bias="0.203"
         app:srcCompat="@android:drawable/alert_dark_frame" />
 
     <TextView
@@ -64,8 +66,8 @@
         android:layout_marginBottom="8dp"
         android:text="@string/pick_flag_for_country"
         android:textAlignment="center"
-        android:textSize="18sp"
-        android:textStyle="bold"
+        android:textColor="@android:color/white"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -74,8 +76,8 @@
 
     <TextView
         android:id="@+id/text_country_name"
-        android:layout_width="164dp"
-        android:layout_height="49dp"
+        android:layout_width="332dp"
+        android:layout_height="52dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:textAlignment="center"
@@ -83,26 +85,32 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintHorizontal_bias="0.428"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pick_flag_text"
-        app:layout_constraintVertical_bias="0.159" />
+        app:layout_constraintVertical_bias="0.121" />
 
     <Button
         android:id="@+id/button_next_game3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
+        android:layout_width="226dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="92dp"
+        android:background="@drawable/shape_game1"
         android:onClick="next_quiz"
         android:text="@string/nextgame3"
+        android:textColor="#00BCD4"
+        android:textSize="18sp"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/text_result_game3"
-        android:layout_width="106dp"
+        android:layout_width="137dp"
         android:layout_height="41dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
@@ -111,7 +119,8 @@
         app:layout_constraintBottom_toTopOf="@+id/button_next_game3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_country_name" />
+        app:layout_constraintTop_toBottomOf="@+id/text_country_name"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/text_timer_game3"
@@ -122,12 +131,49 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:textAlignment="center"
+        android:textColor="@android:color/white"
         android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/game3_header_text"
+        android:layout_width="211dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Guess The Flag"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.935"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.017" />
+        app:layout_constraintVertical_bias="0.084" />
+
+    <Button
+        android:id="@+id/back_game3"
+        android:layout_width="110dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="5dp"
+        android:alpha="0"
+        android:onClick="back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 </android.support.constraint.ConstraintLayout>
