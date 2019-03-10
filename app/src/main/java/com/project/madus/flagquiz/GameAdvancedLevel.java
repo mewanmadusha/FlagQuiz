@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -53,6 +54,7 @@ public class GameAdvancedLevel extends AppCompatActivity {
     TextView flag_two_answer_lable;
     TextView flag_three_answer_lable;
 
+    TextView game4Headertext;
     boolean ans1flag=false;
     boolean ans2flag=false;
     boolean ans3flag=false;
@@ -93,11 +95,27 @@ public class GameAdvancedLevel extends AppCompatActivity {
         flag_two_answer_lable=(TextView)findViewById(R.id.flag_two_answer_lable);
         flag_three_answer_lable=(TextView)findViewById(R.id.flag_three_answer_lable);
 
+        game4Headertext = findViewById(R.id.advanced_flag_text);
+
         textTimerGame4 = (TextView) findViewById(R.id.text_timer_game4);
+
 
         text_result_game4=(TextView)findViewById(R.id.text_result_game4);
         score_text=(TextView)findViewById(R.id.score);
         score_text.setText(String.valueOf(score));
+
+        /*
+         * configure font
+         * */
+        Typeface font = Typeface.createFromAsset(getAssets(), "font.ttf");
+        flag_three_answer_lable.setTypeface(font);
+        flag_two_answer_lable.setTypeface(font);
+        flag_one_answer_lable.setTypeface(font);
+        button.setTypeface(font);
+        textTimerGame4.setTypeface(font);
+        game4Headertext.setTypeface(font);
+
+
         /*
         * get data from intent switch status
         * */
@@ -455,5 +473,7 @@ public class GameAdvancedLevel extends AppCompatActivity {
     }
 
 
-
+    public void back(View view) {
+        finish();
+    }
 }

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -45,6 +46,8 @@ public class GameGuessHint extends AppCompatActivity {
     int life=3;
     TextView text_status;
     TextView textTimerGame2;
+    TextView game2_header;
+    TextView tv2;
 
     /*
      * switch status
@@ -72,6 +75,17 @@ public class GameGuessHint extends AppCompatActivity {
         text_lifecount=findViewById(R.id.text_lifecount);
         text_status=findViewById(R.id.text_status);
         textTimerGame2 = findViewById(R.id.text_timer_game2);
+        game2_header = findViewById(R.id.text_message_2);
+        tv2 = findViewById(R.id.textView2);
+
+        Typeface font = Typeface.createFromAsset(getAssets(), "font.ttf");
+        textViewResult2.setTypeface(font);
+        checkButton2.setTypeface(font);
+        textViewdash.setTypeface(font);
+        text_status.setTypeface(font);
+        game2_header.setTypeface(font);
+        tv2.setTypeface(font);
+
 
         Intent intent = getIntent();
         message = intent.getStringExtra(Home.EXTRA_MESSAGE);
@@ -521,5 +535,9 @@ public class GameGuessHint extends AppCompatActivity {
     public void next_quiz_game2(View view) {
 
 
+    }
+
+    public void back(View view) {
+        finish();
     }
 }

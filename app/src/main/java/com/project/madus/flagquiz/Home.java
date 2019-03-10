@@ -2,12 +2,14 @@ package com.project.madus.flagquiz;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -37,6 +39,13 @@ public class Home extends AppCompatActivity {
 
     FlagDataBaseHealper  flagDataBaseHealper;
 
+    Button game1;
+    Button game2;
+    Button game3;
+    Button game4;
+    TextView timer_text;
+    TextView text_head;
+
     ArrayList<FlagDataModel> flagDataArray = new ArrayList<FlagDataModel>();
 
 
@@ -46,20 +55,39 @@ public class Home extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
          simpleSwitch = (Switch) findViewById(R.id.switch_time);
-         submit = (Button) findViewById(R.id.button_submit);
-         submit.setOnClickListener(new View.OnClickListener() {
-             @Override
-             public void onClick(View v) {
 
 
-                 if (simpleSwitch.isChecked())
-                     statusSwitch = simpleSwitch.getTextOn().toString();
-                 else
-                     statusSwitch = simpleSwitch.getTextOff().toString();
+//        submit = (Button) findViewById(R.id.button_submit);
 
-                 Toast.makeText(getApplicationContext(), "timer :" + statusSwitch + "\n", Toast.LENGTH_LONG).show(); // display the current state for switch's
-             }
-         });
+        game1 = findViewById(R.id.button_guess_country);
+        game2 = findViewById(R.id.button_guess_hint);
+        game3 = findViewById(R.id.button_guess_flag);
+        game4 = findViewById(R.id.button_advanced_level);
+        timer_text = findViewById(R.id.timer_text);
+        text_head = findViewById(R.id.home_head_text);
+
+        Typeface font = Typeface.createFromAsset(getAssets(), "font.ttf");
+        game1.setTypeface(font);
+        game2.setTypeface(font);
+        game3.setTypeface(font);
+        game4.setTypeface(font);
+        timer_text.setTypeface(font);
+        text_head.setTypeface(font);
+
+
+//         submit.setOnClickListener(new View.OnClickListener() {
+//             @Override
+//             public void onClick(View v) {
+//
+//
+//                 if (simpleSwitch.isChecked())
+//                     statusSwitch = simpleSwitch.getTextOn().toString();
+//                 else
+//                     statusSwitch = simpleSwitch.getTextOff().toString();
+//
+//                 Toast.makeText(getApplicationContext(), "timer :" + statusSwitch + "\n", Toast.LENGTH_LONG).show(); // display the current state for switch's
+//             }
+//         });
 
          /*
          * calling constructor of databasehelper.class
