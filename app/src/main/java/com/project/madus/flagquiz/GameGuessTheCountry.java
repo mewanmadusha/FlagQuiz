@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
+import android.graphics.Typeface;
+import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,8 +19,10 @@ import android.widget.TextView;
 import com.project.madus.flagquiz.database.FlagDataBaseHealper;
 import com.project.madus.flagquiz.model.FlagDataModel;
 
+import java.security.acl.Group;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Random;
 
 /**
@@ -26,19 +30,37 @@ import java.util.Random;
  */
 public class GameGuessTheCountry extends AppCompatActivity {
 
+
+    /*
+     * this use as milisecods
+     * 10000miliseconds=10 seconds
+     * */
+    private static final long COUNTDOWN_FOR_QUIZ = 30000;
+    private CountDownTimer countDownTimer;
+    private long timeLeft;
+
+
     ImageView imageView;
     Spinner spinner;
     TextView textViewResult;
     Button checkButton;
     Button nextQuizButton;
-
+    private TextView textTimer;
+    TextView chooseText;
+    TextView answer;
+    TextView game1_header;
 
     List<FlagDataModel> flagDataModels= new ArrayList<FlagDataModel>();
     List<FlagDataModel> flagDataModelsCopy= new ArrayList<FlagDataModel>();
     ArrayList<String> countryNames=new ArrayList<>();
     FlagDataModel flagDataModel;
     FlagDataBaseHealper  flagDataBaseHealper;
+    boolean correct = false;
 
+    /*
+     * timer swithc on off status
+     * */
+    String message;
     private Random randomGenerator;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,14 +68,26 @@ public class GameGuessTheCountry extends AppCompatActivity {
         setContentView(R.layout.activity_game_guess_the_country);
 
         Intent intent = getIntent();
-        String message = intent.getStringExtra(Home.EXTRA_MESSAGE);
+        message = intent.getStringExtra(Home.EXTRA_MESSAGE);
         TextView textView = findViewById(R.id.text_message);
         textView.setText(message);
+
+        Typeface font = Typeface.createFromAsset(getAssets(), "font.ttf");
+        textView.setTypeface(font);
 
         spinner=findViewById(R.id.spinner);
         textViewResult=findViewById(R.id.text_result);
         checkButton=findViewById(R.id.button_check_game2);
-        nextQuizButton=findViewById(R.id.button_next);
+        answer = findViewById(R.id.answer_text);
+        game1_header = findViewById(R.id.head_game1);
+//        nextQuizButton=findViewById(R.id.button_next);
+        textTimer = findViewById(R.id.text_timer_game1);
+        chooseText = findViewById(R.id.choose_flag_text);
+        checkButton.setTypeface(font);
+        textViewResult.setTypeface(font);
+        answer.setTypeface(font);
+        game1_header.setTypeface(font);
+        chooseText.setTypeface(font);
 
 
 //        ActionBar actionBar = getActionBar();
@@ -90,7 +124,15 @@ public class GameGuessTheCountry extends AppCompatActivity {
         /*
         * to genarate random flag
         * */
+
+
         genarateRandomFlag();
+
+        if (message.equals("ON")) {
+            timeLeft = COUNTDOWN_FOR_QUIZ;
+            beingCountDown();
+        }
+
 
     }
 
@@ -117,11 +159,13 @@ public class GameGuessTheCountry extends AppCompatActivity {
      */
     private ArrayList<FlagDataModel> getflagdatafromCursor(Cursor result) {
 
+
         ArrayList<FlagDataModel> dataList = new ArrayList<FlagDataModel>();
         while(result.moveToNext()) {
             dataList.add(new FlagDataModel(result.getInt(result.getColumnIndex("id")), result.getString(result.getColumnIndex("flag_code")), result.getString(result.getColumnIndex("flag_name"))));
         }
         result.close();
+
 
         return  dataList;
     }
@@ -196,12 +240,29 @@ public class GameGuessTheCountry extends AppCompatActivity {
             if (flagDataModel.getName() == spinnerValue) {
 
                 textViewResult.setVisibility(View.VISIBLE);
-                textViewResult.setText("Answe is Correct : it is " + flagDataModel.getName());
+                answer.setVisibility(View.VISIBLE);
+                textViewResult.setText("Answer is Correct");
+                answer.setText(flagDataModel.getName());
                 textViewResult.setTextColor(Color.GREEN);
+                answer.setTextColor(Color.BLUE);
+                textTimer.setText("");
+
+                if (message.equals("ON")) {
+                    pauseTimer();
+                }
+                correct = true;
             } else {
+                answer.setVisibility(View.VISIBLE);
                 textViewResult.setVisibility(View.VISIBLE);
-                textViewResult.setText("Answer is Wrong!! : it is " + flagDataModel.getName());
+                textViewResult.setText("Answer is Wrong!!");
+                answer.setText(flagDataModel.getName());
+                answer.setTextColor(Color.BLUE);
                 textViewResult.setTextColor(Color.RED);
+                textTimer.setText("");
+
+                if (message.equals("ON")) {
+                    pauseTimer();
+                }
             }
 
 //            checkButton.setVisibility(View.GONE);
@@ -211,6 +272,7 @@ public class GameGuessTheCountry extends AppCompatActivity {
             flagDataModelsCopy.remove(flagDataModel.getId());
 
             checkButton.setText("Next");
+
         } else if (checkButton.getText().equals("Next")) {
 
 
@@ -223,8 +285,9 @@ public class GameGuessTheCountry extends AppCompatActivity {
 //            nextQuizButton.setVisibility(View.GONE);
             spinner.setVisibility(View.VISIBLE);
             textViewResult.setVisibility(View.GONE);
+            answer.setVisibility(View.GONE);
             checkButton.setText("Check");
-
+            correct = false;
             /*
              * to avoid duplicate ramdom index
              * removed alredy genarated index
@@ -233,7 +296,63 @@ public class GameGuessTheCountry extends AppCompatActivity {
             Log.i("Array size", String.valueOf(flagDataModelsCopy.size()));
 
 
+            /*
+             * timer set to 10 secods count down
+             * */
+
+
+            if (message.equals("ON")) {
+                resetTimer();
+            }
         }
+    }
+
+    private void resetTimer() {
+        timeLeft = COUNTDOWN_FOR_QUIZ;
+        updateCountDownText();
+        beingCountDown();
+    }
+
+    private void pauseTimer() {
+        countDownTimer.cancel();
+    }
+
+    private void beingCountDown() {
+
+        countDownTimer = new CountDownTimer(timeLeft, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+
+                timeLeft = millisUntilFinished;
+                updateCountDownText();
+
+            }
+
+            @Override
+            public void onFinish() {
+
+                timeLeft = 0;
+                checkButton.performClick();
+
+
+            }
+        }.start();
+    }
+
+    private void updateCountDownText() {
+
+//        int minutes =(int) (timeLeft/1000)/60;
+        int seconds = (int) (timeLeft / 1000) % 60;
+
+        String formatedTime = String.format(Locale.getDefault(), "%02d", seconds);
+
+        textTimer.setText(formatedTime);
+
+
+    }
+
+    public void back(View view) {
+        finish();
     }
 
 
