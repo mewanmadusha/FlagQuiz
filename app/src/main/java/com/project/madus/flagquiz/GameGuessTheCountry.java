@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.CountDownTimer;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,6 +18,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.project.madus.flagquiz.database.FlagDataBaseHealper;
+import com.project.madus.flagquiz.logic.CommonLogic;
+import com.project.madus.flagquiz.logic.logicImpl.CommonLogicImpl;
 import com.project.madus.flagquiz.model.FlagDataModel;
 
 import java.security.acl.Group;
@@ -50,12 +53,15 @@ public class GameGuessTheCountry extends AppCompatActivity {
     TextView answer;
     TextView game1_header;
 
+    CommonLogic commonLogic = new CommonLogicImpl();
+
     List<FlagDataModel> flagDataModels= new ArrayList<FlagDataModel>();
     List<FlagDataModel> flagDataModelsCopy= new ArrayList<FlagDataModel>();
     ArrayList<String> countryNames=new ArrayList<>();
     FlagDataModel flagDataModel;
     FlagDataBaseHealper  flagDataBaseHealper;
     boolean correct = false;
+
 
     /*
      * timer swithc on off status
@@ -160,14 +166,9 @@ public class GameGuessTheCountry extends AppCompatActivity {
     private ArrayList<FlagDataModel> getflagdatafromCursor(Cursor result) {
 
 
-        ArrayList<FlagDataModel> dataList = new ArrayList<FlagDataModel>();
-        while(result.moveToNext()) {
-            dataList.add(new FlagDataModel(result.getInt(result.getColumnIndex("id")), result.getString(result.getColumnIndex("flag_code")), result.getString(result.getColumnIndex("flag_name"))));
-        }
-        result.close();
+        return commonLogic.getFlagDataModel(result);
 
 
-        return  dataList;
     }
 
     private void sppinerDataSetup() {
@@ -353,6 +354,7 @@ public class GameGuessTheCountry extends AppCompatActivity {
 
     public void back(View view) {
         finish();
+        pauseTimer();
     }
 
 

@@ -16,6 +16,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.project.madus.flagquiz.database.FlagDataBaseHealper;
+import com.project.madus.flagquiz.logic.CommonLogic;
+import com.project.madus.flagquiz.logic.logicImpl.CommonLogicImpl;
 import com.project.madus.flagquiz.model.FlagDataModel;
 
 import java.util.ArrayList;
@@ -50,6 +52,9 @@ public class GameGuessTheFlag extends AppCompatActivity {
     FlagDataModel flagDataModel;
     FlagDataModel flagDataModelRan1;
     FlagDataModel flagDataModelRan2;
+
+    private CommonLogic commonLogic = new CommonLogicImpl();
+
 
     ImageView randomimageView;
     String message;
@@ -248,13 +253,15 @@ public class GameGuessTheFlag extends AppCompatActivity {
      */
     private ArrayList<FlagDataModel> getflagdatafromCursor(Cursor result) {
 
-        ArrayList<FlagDataModel> dataList = new ArrayList<FlagDataModel>();
-        while(result.moveToNext()) {
-            dataList.add(new FlagDataModel(result.getInt(result.getColumnIndex("id")), result.getString(result.getColumnIndex("flag_code")), result.getString(result.getColumnIndex("flag_name"))));
-        }
-        result.close();
+//        ArrayList<FlagDataModel> dataList = new ArrayList<FlagDataModel>();
+////        while(result.moveToNext()) {
+////            dataList.add(new FlagDataModel(result.getInt(result.getColumnIndex("id")), result.getString(result.getColumnIndex("flag_code")), result.getString(result.getColumnIndex("flag_name"))));
+////        }
+////        result.close();
+////
+////        return  dataList;
 
-        return  dataList;
+        return commonLogic.getFlagDataModel(result);
     }
 
 

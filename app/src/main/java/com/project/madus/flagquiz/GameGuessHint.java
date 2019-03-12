@@ -17,6 +17,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.project.madus.flagquiz.database.FlagDataBaseHealper;
+import com.project.madus.flagquiz.logic.CommonLogic;
+import com.project.madus.flagquiz.logic.logicImpl.CommonLogicImpl;
 import com.project.madus.flagquiz.model.FlagDataModel;
 
 import java.util.ArrayList;
@@ -48,6 +50,7 @@ public class GameGuessHint extends AppCompatActivity {
     TextView textTimerGame2;
     TextView game2_header;
     TextView tv2;
+    private CommonLogic commonLogic = new CommonLogicImpl();
 
     /*
      * switch status
@@ -177,13 +180,16 @@ public class GameGuessHint extends AppCompatActivity {
      */
     private ArrayList<FlagDataModel> getflagdatafromCursor(Cursor result) {
 
-        ArrayList<FlagDataModel> dataList = new ArrayList<FlagDataModel>();
-        while(result.moveToNext()) {
-            dataList.add(new FlagDataModel(result.getInt(result.getColumnIndex("id")), result.getString(result.getColumnIndex("flag_code")), result.getString(result.getColumnIndex("flag_name"))));
-        }
-        result.close();
+//        ArrayList<FlagDataModel> dataList = new ArrayList<FlagDataModel>();
+//        while(result.moveToNext()) {
+//            dataList.add(new FlagDataModel(result.getInt(result.getColumnIndex("id")), result.getString(result.getColumnIndex("flag_code")), result.getString(result.getColumnIndex("flag_name"))));
+//        }
+//        result.close();
+//
+//        return  dataList;
 
-        return  dataList;
+        return commonLogic.getFlagDataModel(result);
+
     }
 
     private void genarateRandomFlag() {
@@ -532,12 +538,10 @@ public class GameGuessHint extends AppCompatActivity {
 
     }
 
-    public void next_quiz_game2(View view) {
 
-
-    }
 
     public void back(View view) {
         finish();
+        pauseTimer();
     }
 }
