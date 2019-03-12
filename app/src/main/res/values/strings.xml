@@ -38,4 +38,81 @@
     <string name="timer">Timer :</string>
     <string name="timer_text">Timer:</string>
     <string name="quiz_menu">Quiz Menu</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="about_flagquiz">In this FlagIQ android application i created four exciting levels to gain fun together with knowledge.Below describes about these four level you
+        can enjoy
+\n\n
+        <b><i><u>Guess The Country</u></i></b>
+        \n\n
+       Clicking on the Guess the Country button, it should display to the user one random
+flag image picked randomly (and NOT in the same random sequence every time the
+application restarts) from the 256 countries.
+The screen should also display a dropdown list with ALL the names of the 256
+countries and a button labelled Submit. The user should use the list to select the
+country that the flag corresponds to and clicking the “Submit” button he/she submits
+the guess to the app.\n\n
+        As soon as the user submits the answer, the message CORRECT! (in green colour)
+or the message WRONG! (in red colour) appears on the screen with the name of the
+correct country in Blue colour, depending on whether the answer given is correct or
+incorrect respectively
+\n\n
+
+        <b><i><u>Guess Hints</u></i></b>
+        \n\n
+    Clicking on the Guess-Hints button, it should display to the user one random flag
+image picked from the 256 countries.
+The screen should also display as many dashes as the name of the country that the
+flag corresponds to, a textbox and a Submit button. The user will be using the
+textbox to type a single character which is part of the country’s name in an attempt
+to guess the flag’s country character by character and submit his guesses using the
+“Submit” button. Any correct guesses of characters will be replacing the corresponding dashes with the actual character (ALL instances of the dashes corresponding to
+that character will be substituted).
+
+
+
+
+\n\n
+
+
+                <b><i><u>Guess the Flag</u></i></b>
+        \n\n
+
+       Clicking on the Guess the Country button, it should display to the user one random
+flag image picked randomly (and NOT in the same random sequence every time the
+application restarts) from the 256 countries.
+The screen should also display a dropdown list with ALL the names of the 256
+countries and a button labelled Submit. The user should use the list to select the
+country that the flag corresponds to and clicking the “Submit” button he/she submits
+the guess to the app.\n\n
+        As soon as the user submits the answer, the message CORRECT! (in green colour)
+or the message WRONG! (in red colour) appears on the screen with the name of the
+correct country in Blue colour, depending on whether the answer given is correct or
+incorrect respectively
+
+        \n\n
+
+  <b><i><u>Advanced Level</u></i></b>
+        \n\n
+ \n\n
+      Clicking on the Guess-Hints button, it should display to the user one random flag
+image picked from the 256 countries.
+The screen should also display as many dashes as the name of the country that the
+flag corresponds to, a textbox and a Submit button. The user will be using the
+textbox to type a single character which is part of the country’s name in an attempt
+to guess the flag’s country character by character and submit his guesses using the
+“Submit” button. Any correct guesses of characters will be replacing the corresponding dashes with the actual character (ALL instances of the dashes corresponding to
+that character will be substituted).
+
+\n\n
+
+
+        <i><b>All Right Recived, Unauthorized access is prohibited.</b></i>
+
+
+\n\n
+</string>
+
+
 </resources>
