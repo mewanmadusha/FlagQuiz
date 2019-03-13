@@ -3,11 +3,14 @@ package com.project.madus.flagquiz;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Typeface;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -46,6 +49,7 @@ public class Home extends AppCompatActivity {
     TextView timer_text;
     TextView text_head;
 
+
     ArrayList<FlagDataModel> flagDataArray = new ArrayList<FlagDataModel>();
 
 
@@ -65,6 +69,7 @@ public class Home extends AppCompatActivity {
         game4 = findViewById(R.id.button_advanced_level);
         timer_text = findViewById(R.id.timer_text);
         text_head = findViewById(R.id.home_head_text);
+
 
         Typeface font = Typeface.createFromAsset(getAssets(), "font.ttf");
         game1.setTypeface(font);
@@ -292,5 +297,12 @@ public class Home extends AppCompatActivity {
         }
         return json;
     }
+
+    public void game_info(View view) {
+
+        Intent intent = new Intent(this, Information.class);
+        startActivity(intent);
+    }
+
 
 }

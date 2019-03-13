@@ -88,6 +88,7 @@ public class GameGuessHint extends AppCompatActivity {
         text_status.setTypeface(font);
         game2_header.setTypeface(font);
         tv2.setTypeface(font);
+        textTimerGame2.setTypeface(font);
 
 
         Intent intent = getIntent();
@@ -541,7 +542,20 @@ public class GameGuessHint extends AppCompatActivity {
 
 
     public void back(View view) {
+        if (message.equals("ON")) {
+            pauseTimer();
+        }
         finish();
-        pauseTimer();
+    }
+
+    /*
+     * device back button clicked
+     * */
+    @Override
+    public void onBackPressed() {
+        if (message.equals("ON")) {
+            pauseTimer();
+        }
+        super.onBackPressed();
     }
 }

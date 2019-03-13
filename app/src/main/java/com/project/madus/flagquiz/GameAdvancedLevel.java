@@ -468,6 +468,7 @@ public class GameAdvancedLevel extends AppCompatActivity {
             ans3flag=false;
             ans2flag=false;
             ans1flag=false;
+
             flag_one_answer.setFocusableInTouchMode(true);
             flag_two_answer.setFocusableInTouchMode(true);
             flag_three_answer.setFocusableInTouchMode(true);
@@ -481,6 +482,21 @@ public class GameAdvancedLevel extends AppCompatActivity {
 
 
     public void back(View view) {
+
+        if (message.equals("ON")) {
+            pauseTimer();
+        }
         finish();
+    }
+
+    /*
+     * device back button clicked
+     * */
+    @Override
+    public void onBackPressed() {
+        if (message.equals("ON")) {
+            pauseTimer();
+        }
+        super.onBackPressed();
     }
 }

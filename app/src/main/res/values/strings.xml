@@ -41,74 +41,61 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="about_flagquiz">In this FlagIQ android application i created four exciting levels to gain fun together with knowledge.Below describes about these four level you
+    <string name="about_flagquiz">FlagQuiz android application created with four levels to gain Knowledge about many countries and to have some gaming xp. lets see about it
         can enjoy
 \n\n
-        <b><i><u>Guess The Country</u></i></b>
-        \n\n
-       Clicking on the Guess the Country button, it should display to the user one random
-flag image picked randomly (and NOT in the same random sequence every time the
-application restarts) from the 256 countries.
-The screen should also display a dropdown list with ALL the names of the 256
-countries and a button labelled Submit. The user should use the list to select the
-country that the flag corresponds to and clicking the “Submit” button he/she submits
-the guess to the app.\n\n
-        As soon as the user submits the answer, the message CORRECT! (in green colour)
-or the message WRONG! (in red colour) appears on the screen with the name of the
-correct country in Blue colour, depending on whether the answer given is correct or
-incorrect respectively
-\n\n
+        <b><i><u>Guess The Country- GAME 1</u></i></b>
+        \n\n\n
+       Clicking on the Guess the Country button,it display random flag pick from the 256 countries.
+there is also dropdown list with ALL the names of the 256 countries
+        The user select country name from dropdown list and click submit button it will check answer and show whether answer is correct or wrong
 
-        <b><i><u>Guess Hints</u></i></b>
-        \n\n
-    Clicking on the Guess-Hints button, it should display to the user one random flag
-image picked from the 256 countries.
-The screen should also display as many dashes as the name of the country that the
-flag corresponds to, a textbox and a Submit button. The user will be using the
+\n\n\n
+
+        <b><i><u>Guess Hints- GAME 2</u></i></b>
+        \n\n\n
+    Clicking on the Guess-Hints button, t display random flag pick from the 256 countries.
+there is also some dashes equals to country name characters
+        The user will be using the
 textbox to type a single character which is part of the country’s name in an attempt
 to guess the flag’s country character by character and submit his guesses using the
-“Submit” button. Any correct guesses of characters will be replacing the corresponding dashes with the actual character (ALL instances of the dashes corresponding to
-that character will be substituted).
+“Submit” button.if there  Any correct guesses of characters will be replacing the corresponding dashes with the actual character .
 
 
 
 
-\n\n
+\n\n\n
 
 
-                <b><i><u>Guess the Flag</u></i></b>
-        \n\n
+                <b><i><u>Guess the Flag- GAME 3</u></i></b>
+        \n\n\n
 
-       Clicking on the Guess the Country button, it should display to the user one random
-flag image picked randomly (and NOT in the same random sequence every time the
-application restarts) from the 256 countries.
-The screen should also display a dropdown list with ALL the names of the 256
-countries and a button labelled Submit. The user should use the list to select the
-country that the flag corresponds to and clicking the “Submit” button he/she submits
-the guess to the app.\n\n
-        As soon as the user submits the answer, the message CORRECT! (in green colour)
-or the message WRONG! (in red colour) appears on the screen with the name of the
-correct country in Blue colour, depending on whether the answer given is correct or
-incorrect respectively
+       Clicking on the Guess the flag button,it display name of the random flag from 256 countries
+and also gave some randowm three country flag with correct flag to select correct one from that three flags
+        when click flag it gives answer is correct or wrong
 
-        \n\n
+        \n\n\n
 
-  <b><i><u>Advanced Level</u></i></b>
-        \n\n
- \n\n
-      Clicking on the Guess-Hints button, it should display to the user one random flag
-image picked from the 256 countries.
-The screen should also display as many dashes as the name of the country that the
-flag corresponds to, a textbox and a Submit button. The user will be using the
-textbox to type a single character which is part of the country’s name in an attempt
-to guess the flag’s country character by character and submit his guesses using the
-“Submit” button. Any correct guesses of characters will be replacing the corresponding dashes with the actual character (ALL instances of the dashes corresponding to
-that character will be substituted).
+  <b><i><u>Advanced Level- GAME 4</u></i></b>
+        \n\n\n
 
-\n\n
+      Clicking on the Advanced-level button,this give some advanced xp to user to guess three names of given random flag
+        and submit there answer. user got three submit terms to check answers
 
 
-        <i><b>All Right Recived, Unauthorized access is prohibited.</b></i>
+\n\n\n
+
+        <b><i><u>Time Based</u></i></b>
+
+          \n\n\n
+        if user switch on the timer every game play based on timer
+        timer normal limit was 10 seconds.
+
+
+
+
+ \n\n\n
+        <i><b>All Right Recived,By Mewan Madusha.</b></i>
 
 
 \n\n

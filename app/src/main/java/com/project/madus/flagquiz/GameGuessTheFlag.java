@@ -95,6 +95,7 @@ public class GameGuessTheFlag extends AppCompatActivity {
         text_result_game3.setTypeface(font);
         game3_header.setTypeface(font);
         pickFlagText.setTypeface(font);
+        textTimerGame3.setTypeface(font);
 
 
         /*
@@ -353,6 +354,17 @@ public class GameGuessTheFlag extends AppCompatActivity {
 
 
     public void back(View view) {
+        if (message.equals("ON")) {
+            pauseTimer();
+        }
         finish();
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (message.equals("ON")) {
+            pauseTimer();
+        }
+        super.onBackPressed();
     }
 }

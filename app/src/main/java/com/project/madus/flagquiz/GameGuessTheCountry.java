@@ -38,7 +38,7 @@ public class GameGuessTheCountry extends AppCompatActivity {
      * this use as milisecods
      * 10000miliseconds=10 seconds
      * */
-    private static final long COUNTDOWN_FOR_QUIZ = 30000;
+    private static final long COUNTDOWN_FOR_QUIZ = 10000;
     private CountDownTimer countDownTimer;
     private long timeLeft;
 
@@ -94,6 +94,7 @@ public class GameGuessTheCountry extends AppCompatActivity {
         answer.setTypeface(font);
         game1_header.setTypeface(font);
         chooseText.setTypeface(font);
+        textTimer.setTypeface(font);
 
 
 //        ActionBar actionBar = getActionBar();
@@ -353,8 +354,10 @@ public class GameGuessTheCountry extends AppCompatActivity {
     }
 
     public void back(View view) {
+        if (message.equals("ON")) {
+            pauseTimer();
+        }
         finish();
-        pauseTimer();
     }
 
 
