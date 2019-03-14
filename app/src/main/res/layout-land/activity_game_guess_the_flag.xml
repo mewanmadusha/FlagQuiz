@@ -82,7 +82,7 @@
 
     <TextView
         android:id="@+id/text_country_name"
-        android:layout_width="287dp"
+        android:layout_width="417dp"
         android:layout_height="47dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"

@@ -132,7 +132,7 @@
 
     <TextView
         android:id="@+id/Text_answer_dash"
-        android:layout_width="191dp"
+        android:layout_width="318dp"
         android:layout_height="36dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
@@ -143,10 +143,9 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.477"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_message_2"
-        app:layout_constraintVertical_bias="0.573" />
+        app:layout_constraintVertical_bias="0.543" />
 
     <ImageView
         android:id="@+id/imageView3"
