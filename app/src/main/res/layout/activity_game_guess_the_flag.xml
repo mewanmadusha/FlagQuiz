@@ -92,8 +92,8 @@
 
     <Button
         android:id="@+id/button_next_game3"
-        android:layout_width="226dp"
-        android:layout_height="44dp"
+        android:layout_width="232dp"
+        android:layout_height="53dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="92dp"
         android:background="@drawable/shape_game1"
@@ -106,7 +106,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.978" />
 
     <TextView
         android:id="@+id/text_result_game3"
@@ -125,20 +125,17 @@
     <TextView
         android:id="@+id/text_timer_game3"
         android:layout_width="51dp"
-        android:layout_height="43dp"
+        android:layout_height="98dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="524dp"
         android:textAlignment="center"
         android:textColor="@android:color/white"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintHorizontal_bias="0.982"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/game3_header_text"

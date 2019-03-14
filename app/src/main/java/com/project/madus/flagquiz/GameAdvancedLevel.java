@@ -17,6 +17,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.project.madus.flagquiz.logic.CommonLogic;
+import com.project.madus.flagquiz.logic.logicImpl.CommonLogicImpl;
 import com.project.madus.flagquiz.model.FlagDataModel;
 import com.project.madus.flagquiz.database.FlagDataBaseHealper;
 
@@ -65,6 +67,8 @@ public class GameAdvancedLevel extends AppCompatActivity {
     List<FlagDataModel> flagDataModels= new ArrayList<FlagDataModel>();
     List<FlagDataModel> flagDataModelsCopy= new ArrayList<FlagDataModel>();
     FlagDataModel flagDataModel;
+
+    private CommonLogic commonLogic = new CommonLogicImpl();
 
     /*
      * switch status variable
@@ -321,13 +325,16 @@ public class GameAdvancedLevel extends AppCompatActivity {
      */
     private ArrayList<FlagDataModel> getflagdatafromCursor(Cursor result) {
 
-        ArrayList<FlagDataModel> dataList = new ArrayList<FlagDataModel>();
-        while(result.moveToNext()) {
-            dataList.add(new FlagDataModel(result.getInt(result.getColumnIndex("id")), result.getString(result.getColumnIndex("flag_code")), result.getString(result.getColumnIndex("flag_name"))));
-        }
-        result.close();
+//        ArrayList<FlagDataModel> dataList = new ArrayList<FlagDataModel>();
+//        while(result.moveToNext()) {
+//            dataList.add(new FlagDataModel(result.getInt(result.getColumnIndex("id")), result.getString(result.getColumnIndex("flag_code")), result.getString(result.getColumnIndex("flag_name"))));
+//        }
+//        result.close();
+//
+//        return  dataList;
 
-        return  dataList;
+        return commonLogic.getFlagDataModel(result);
+
     }
 
 
@@ -461,6 +468,7 @@ public class GameAdvancedLevel extends AppCompatActivity {
             ans3flag=false;
             ans2flag=false;
             ans1flag=false;
+
             flag_one_answer.setFocusableInTouchMode(true);
             flag_two_answer.setFocusableInTouchMode(true);
             flag_three_answer.setFocusableInTouchMode(true);
@@ -474,6 +482,21 @@ public class GameAdvancedLevel extends AppCompatActivity {
 
 
     public void back(View view) {
+
+        if (message.equals("ON")) {
+            pauseTimer();
+        }
         finish();
+    }
+
+    /*
+     * device back button clicked
+     * */
+    @Override
+    public void onBackPressed() {
+        if (message.equals("ON")) {
+            pauseTimer();
+        }
+        super.onBackPressed();
     }
 }
