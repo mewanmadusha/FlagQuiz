@@ -360,7 +360,13 @@ public class GameGuessTheCountry extends AppCompatActivity {
         finish();
     }
 
-
+    @Override
+    public void onBackPressed() {
+        if (message.equals("ON")) {
+            pauseTimer();
+        }
+        super.onBackPressed();
+    }
     /**
      * @param view
      * move forward to next quation
